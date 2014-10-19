@@ -1,5 +1,5 @@
 // Author: Jan Kristian Sto. Domingo [jstod001@ucr.edu]
-// main.cpp for rshell
+// exec.cpp for rshell
 
 #include <iostream>
 

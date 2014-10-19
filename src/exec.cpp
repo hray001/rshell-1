@@ -15,14 +15,23 @@ using namespace std;
 //Notes on function formats:
 //execvp(const char *file, char *const argv[])
 
-int main(int argc, char* argv[])
+int main()
 {
     int PID = fork();
     if(PID == 0)
     {
         cout << "child process" << endl;
         
-        execvp("echo", argv);
+        string input;
+
+        cout << "$ ";
+        getline(cin, input);
+        input.c_str();      //converts string into a cstring
+
+        // testing
+        cout << "Test string: " << input << endl << endl;
+
+        // execvp(argv[0], argv);
 
     }
     else

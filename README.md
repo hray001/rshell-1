@@ -15,3 +15,4 @@ bugs
 * RShell can only be executed one time. Once a command is successful, the program will exit.
 * The `echo` command can only display one word. For example: `echo hello` will output `hello` to the
 console, but `echo hello world` will result in an error.
+* The `cd` function is currently non-functional. This feature will be added later on.

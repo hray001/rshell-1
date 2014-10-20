@@ -86,10 +86,19 @@ int main()
 
         //cout << arg[0] << endl;
         execvp(arg[0], arg);
+        perror(arg[0]);
     }
     else
     {
-        wait(0);
+        if(PID == -1)
+        {
+            perror("fork");
+        }
+        int w = wait(0);
+        if(w == -1)
+        {
+            perror("wait");
+        }
         //cout << "parent process" << endl;
     }
 

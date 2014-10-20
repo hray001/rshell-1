@@ -93,17 +93,14 @@ int main()
         }
 
         //cout << arg[0] << endl;
-        char exit_key[5] = "exit";
-        //cout << "arg[0]: " << arg[0] << endl;
-        //cout << "exit_key: " << exit_key << endl;
-        //cout << strcmp(arg[0], exit_key) << endl;
-        if(*arg[0] == *exit_key)
+        if(string(arg[0]) == "exit")
         {
-            //cout << "executing exit(0)" << endl;
+            cout << "executing exit(0)" << endl;
             exit(0);
         }
         else
         {
+            cout << "in execvp" << endl;
             execvp(arg[0], arg);
             perror(arg[0]);
         }

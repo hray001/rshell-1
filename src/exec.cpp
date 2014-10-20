@@ -24,11 +24,11 @@ unsigned tokenCounter(char* a)
     unsigned count = 0;
     char* token;
 
-    token = strtok(a, " ");
+    token = strtok(a, " ;");
 
     while(token != NULL)
     {
-        token = strtok(NULL, " ");
+        token = strtok(NULL, " ;");
         count++;
     }
 
@@ -42,8 +42,14 @@ int main()
     {
         //cout << "child process" << endl;
         
+        // command prompt
+        char* username = getlogin();
+        char hostname[10];
+        gethostname(hostname, 10);
+        cout << username << "@" << hostname;
+        cout << "$ ";
+        
         string str_input;
-        cout << "$ ";           //serves as command prompt
         getline(cin, str_input);
 
         // output message for test purposes
@@ -76,11 +82,11 @@ int main()
         // which will then be used as a parameter in execvp
         unsigned i = 0;
         char* ptr;
-        ptr = strtok(c_input, " ");
+        ptr = strtok(c_input, " ;");
         while(ptr != NULL)
         {
             arg[i] = ptr;
-            ptr = strtok(NULL, " ");
+            ptr = strtok(NULL, " ;");
             i++;
         }
 

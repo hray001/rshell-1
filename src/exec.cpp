@@ -44,10 +44,9 @@ int main()
         
         // command prompt
         char* username = getlogin();
-        char hostname[10];
-        gethostname(hostname, 10);
-        cout << username << "@" << hostname;
-        cout << "$ ";
+        char hostname[20];
+        gethostname(hostname, 20);
+        cout << username << "@" << hostname << "$ ";
         
         string str_input;
         getline(cin, str_input);

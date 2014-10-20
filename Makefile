@@ -1,5 +1,5 @@
-all:
+all: /src/exec.cpp
 	g++ -Wall -Werror -ansi -pedantic exec.cpp
 
-rshell:
+rshell: /src/exec.cpp
 	g++ -Wall -Werror -ansi -pedantic exec.cpp

@@ -1,5 +1,8 @@
 RShell
 ======
+licensing
+---------
+Read `LICENSE` for more information.
 
 purpose
 -------

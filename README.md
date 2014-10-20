@@ -11,7 +11,7 @@ bugs
 ----
 * In its current standing, RShell only works with single commands and cannot accept the connecters:
 `(;, &&, and ||)`.
-* There is currently no exit command in effect.
+* | There is currently no exit command in effect. | **FIXED** 10/20/2014
 * RShell can only be executed one time. Once a command is successful, the program will exit.
 * The `echo` command can only display one word. For example: `echo hello` will output `hello` to the
 console, but `echo hello world` will result in an error.

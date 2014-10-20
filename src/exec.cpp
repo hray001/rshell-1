@@ -77,21 +77,36 @@ int main()
         // output message for test purposes
         // cout << "c_input after tokenCounter: " << c_input << endl;
 
-        // the following chunk of code will take each token and place it into arg
-        // which will then be used as a parameter in execvp
+        // the following chunk of code will take each token
+        // and place it into arg which will then be used as
+        // a parameter in execvp
         unsigned i = 0;
         char* ptr;
         ptr = strtok(c_input, " ;");
         while(ptr != NULL)
         {
             arg[i] = ptr;
+            // cout message for test purposes
+            cout << "arg[" << i << "] = " << arg[i] << endl;
             ptr = strtok(NULL, " ;");
             i++;
         }
 
         //cout << arg[0] << endl;
-        execvp(arg[0], arg);
-        perror(arg[0]);
+        char exit_key[5] = "exit";
+        //cout << "arg[0]: " << arg[0] << endl;
+        //cout << "exit_key: " << exit_key << endl;
+        //cout << strcmp(arg[0], exit_key) << endl;
+        if(*arg[0] == *exit_key)
+        {
+            //cout << "executing exit(0)" << endl;
+            exit(0);
+        }
+        else
+        {
+            execvp(arg[0], arg);
+            perror(arg[0]);
+        }
     }
     else
     {

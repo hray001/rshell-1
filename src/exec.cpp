@@ -87,7 +87,7 @@ int main()
         {
             arg[i] = ptr;
             // cout message for test purposes
-            cout << "arg[" << i << "] = " << arg[i] << endl;
+            //cout << "arg[" << i << "] = " << arg[i] << endl;
             ptr = strtok(NULL, " ;");
             i++;
         }
@@ -95,12 +95,14 @@ int main()
         //cout << arg[0] << endl;
         if(string(arg[0]) == "exit")
         {
-            cout << "executing exit(0)" << endl;
+            //cout message for test purposes
+            //cout << "executing exit(0)" << endl;
             exit(0);
         }
         else
         {
-            cout << "in execvp" << endl;
+            //cout message for test purposes
+            //cout << "in execvp" << endl;
             execvp(arg[0], arg);
             perror(arg[0]);
         }

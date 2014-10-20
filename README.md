@@ -9,6 +9,4 @@ This program is currently a work in progress.
 bugs
 ----
 * In its current standing, RShell only works with single commands and cannot accept the connecters:
-```
-(;, &&, and ||).
-```
+`(;, &&, and ||)`.

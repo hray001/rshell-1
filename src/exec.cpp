@@ -37,10 +37,10 @@ unsigned tokenCounter(char* a)
 
 int main()
 {
-    int PID = fork();
-    if(PID == 0)
+    string str_input = "";
+    do
     {
-        //cout << "child process" << endl;
+        cout << "\t<child process>" << endl;
         
         // command prompt
         char* username = getlogin();
@@ -48,7 +48,7 @@ int main()
         gethostname(hostname, 20);
         cout << username << "@" << hostname << "$ ";
         
-        string str_input;
+        str_input = "";
         getline(cin, str_input);
 
         // output message for test purposes
@@ -96,17 +96,34 @@ int main()
         if(string(arg[0]) == "exit")
         {
             //cout message for test purposes
-            //cout << "executing exit(0)" << endl;
+            cout << "\t<executing exit(0>)" << endl;
             exit(0);
         }
-        else
+        
+        int PID = fork();
+        if(PID == 0) 
         {
             //cout message for test purposes
-            //cout << "in execvp" << endl;
+            cout << "\t<in execvp>" << endl;
             execvp(arg[0], arg);
             perror(arg[0]);
         }
-    }
+        else
+        {
+            if(PID == -1)
+            {
+                perror("fork");
+            }
+            int w = wait(0);
+            if(w == -1)
+            {
+                perror("wait");
+            }
+            cout << "\t<parent process>" << endl;
+        }
+
+    }while(str_input != "exit");
+/*
     else
     {
         if(PID == -1)
@@ -120,7 +137,7 @@ int main()
         }
         //cout << "parent process" << endl;
     }
-
+*/
     return 0;
 }
 

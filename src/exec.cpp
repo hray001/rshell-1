@@ -136,7 +136,11 @@ int main()
             }
             */
             
-            
+            for(const auto& t : token_list)
+            {
+                execvp(t, token_list);
+                perror(t);
+            }
 
         }
         else

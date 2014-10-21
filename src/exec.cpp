@@ -11,8 +11,10 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+//#include <boost/tokenizer.hpp>
 
 using namespace std;
+//using namespace boost;
 
 //Notes on function formats:
 //execvp(const char *file, char *const argv[])
@@ -53,8 +55,10 @@ int main()
         // output message for test purposes
         // cout << "Original string: " << str_input << endl << endl;
 
+        
         char* c_input = new char[str_input.length() + 1];
         strcpy(c_input, str_input.c_str());
+        
 
         // output message for test purposes
         // cout << "Converted to cstring: " << c_input << endl << endl;
@@ -62,8 +66,10 @@ int main()
         // new cstring now has to be tokenized and placed into a char**
         // for the exec vp function
 
+        
         char* tmp = new char[str_input.length() + 1];
         strcpy(tmp, c_input);
+        
         // tmp protects the original cstring input
         // tmp will be used for the tokenCounter function
 
@@ -76,6 +82,7 @@ int main()
         // output message for test purposes
         // cout << "c_input after tokenCounter: " << c_input << endl;
 
+        
         // the following chunk of code will take each token
         // and place it into arg which will then be used as
         // a parameter in execvp
@@ -86,12 +93,18 @@ int main()
         {
             arg[i] = ptr;
             // cout message for test purposes
-            // cout << "arg[" << i << "] = " << arg[i] << endl;
+             cout << "arg[" << i << "] = " << arg[i] << endl;
             // cout << "arg[" << i << "] length = " << strlen(arg[i]) << endl;
             ptr = strtok(NULL, " ;");
             i++;
         }
         arg[i] = '\0';
+        
+
+        /*
+        char_separator<char> separ(" ;&|");
+        tokenizer<char_separator<char> > token_list(str_input, separ);
+        */
 
         //cout << arg[0] << endl;
         if(string(arg[0]) == "exit")

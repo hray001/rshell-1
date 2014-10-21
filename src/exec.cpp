@@ -48,7 +48,6 @@ int main()
         gethostname(hostname, 20);
         cout << username << "@" << hostname << "$ ";
         
-        str_input = "";
         getline(cin, str_input);
 
         // output message for test purposes
@@ -72,7 +71,7 @@ int main()
         token_count = tokenCounter(tmp);
 
         char** arg;
-        arg = new char* [token_count];
+        arg = new char* [token_count + 1];
         
         // output message for test purposes
         // cout << "c_input after tokenCounter: " << c_input << endl;
@@ -87,16 +86,18 @@ int main()
         {
             arg[i] = ptr;
             // cout message for test purposes
-            //cout << "arg[" << i << "] = " << arg[i] << endl;
+            // cout << "arg[" << i << "] = " << arg[i] << endl;
+            // cout << "arg[" << i << "] length = " << strlen(arg[i]) << endl;
             ptr = strtok(NULL, " ;");
             i++;
         }
+        arg[i] = '\0';
 
         //cout << arg[0] << endl;
         if(string(arg[0]) == "exit")
         {
             //cout message for test purposes
-            cout << "\t<executing exit(0>)" << endl;
+            cout << "\t<executing exit(0)>" << endl;
             exit(0);
         }
         
@@ -112,16 +113,16 @@ int main()
         {
             if(PID == -1)
             {
-                perror("fork");
+                perror("fork failed");
             }
             int w = wait(0);
             if(w == -1)
             {
                 perror("wait");
             }
+
             cout << "\t<parent process>" << endl;
         }
-
     }while(str_input != "exit");
 /*
     else

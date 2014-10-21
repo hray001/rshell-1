@@ -138,8 +138,8 @@ int main()
             
             for(const auto& t : token_list)
             {
-                execvp(t, token_list);
-                perror(t);
+                execvp(t.c_str(), token_list);
+                perror(t.c_str());
             }
 
         }

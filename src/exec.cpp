@@ -100,14 +100,18 @@ int main()
             cout << "\t<executing exit(0)>" << endl;
             exit(0);
         }
-        
+
         int PID = fork();
         if(PID == 0) 
         {
             //cout message for test purposes
             cout << "\t<in execvp>" << endl;
-            execvp(arg[0], arg);
+            int exec = execvp(arg[0], arg);
             perror(arg[0]);
+            if(exec == -1)
+            {
+                exit(0);
+            }
         }
         else
         {
@@ -120,10 +124,10 @@ int main()
             {
                 perror("wait");
             }
-
             cout << "\t<parent process>" << endl;
         }
     }while(str_input != "exit");
+    cout << "after do-while" << endl;
 /*
     else
     {

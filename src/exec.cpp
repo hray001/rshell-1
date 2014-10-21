@@ -26,11 +26,11 @@ unsigned tokenCounter(char* a)
     unsigned count = 0;
     char* token;
 
-    token = strtok(a, " ;");
+    token = strtok(a, " ;&|#");
 
     while(token != NULL)
     {
-        token = strtok(NULL, " ;");
+        token = strtok(NULL, " ;&|#");
         count++;
     }
 
@@ -88,14 +88,14 @@ int main()
         // a parameter in execvp
         unsigned i = 0;
         char* ptr;
-        ptr = strtok(c_input, " ;");
+        ptr = strtok(c_input, " ;&#|");
         while(ptr != NULL)
         {
             arg[i] = ptr;
             // cout message for test purposes
-             cout << "arg[" << i << "] = " << arg[i] << endl;
+            cout << "arg[" << i << "] = " << arg[i] << endl;
             // cout << "arg[" << i << "] length = " << strlen(arg[i]) << endl;
-            ptr = strtok(NULL, " ;");
+            ptr = strtok(NULL, " ;&#|");
             i++;
         }
         arg[i] = '\0';

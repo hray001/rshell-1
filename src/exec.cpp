@@ -106,7 +106,7 @@ int main()
         */
 
         
-        char_separator<char> separ(" ;&|");
+        char_separator<char> separ(" ;&#|");
         tokenizer<char_separator<char> > token_list(str_input, separ);
         
         /*
@@ -119,6 +119,20 @@ int main()
             exit(0);
         }
         */
+        
+	//look at the boost website > tokenizer to understand functionality
+	//of the tokenizer function
+        unsigned i = 0;
+	char** tokens;
+	//tokens = new char*[token_list.length()];
+        for(const auto& t : token_list)
+        {
+	    // Take the token list and place it into an array
+	    // Then use that array for the execvp function
+	    tokens[i] = t.c_str(); 
+	    cout << "tokens[" << i << "] = " << tokens[i] << endl;
+            i++;
+        }
 
         int PID = fork();
         if(PID == 0) 
@@ -135,12 +149,6 @@ int main()
                 exit(0);
             }
             */
-            
-            for(const auto& t : token_list)
-            {
-                execvp(t.c_str(), token_list);
-                perror(t.c_str());
-            }
 
         }
         else

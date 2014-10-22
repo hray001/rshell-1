@@ -1,5 +1,12 @@
-all: /src/exec.cpp
-	g++ -Wall -Werror -ansi -pedantic exec.cpp
+# Makefile for RShell
 
-rshell: /src/exec.cpp
-	g++ -Wall -Werror -ansi -pedantic exec.cpp
+# Variables
+COMPILE = g++
+FLAGS = -Wall -Werror -ansi -pedantic
+
+# Targets
+all: ~/rshell/src/exec.cpp
+	$(COMPILE) $(FLAGS) ~/rshell/src/exec.cpp
+
+rshell: ~/rshell/src/exec.cpp
+	$(COMPILE) $(FLAGS) exec.cpp -o rshell

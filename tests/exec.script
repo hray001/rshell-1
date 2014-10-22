@@ -1,0 +1,73 @@
+Script started on Tue 21 Oct 2014 11:10:25 PM PDT
+~
+jstod001@hammer $ cd rshell/src/
+~/rshell/src
+jstod001@hammer $ ./a.out 
+jstod001@hammer.cs.ucr.edu$ pwd
+/home/csmajs/jstod001/rshell/src
+jstod001@hammer.cs.ucr.edu$ ls; pwd #known bug: cannot handle connecters
+ls: cannot access pwd: No such file or directory
+jstod001@hammer.cs.ucr.edu$ ls -a || pwd || echo hello #more connecter bugs
+ls: cannot access pwd: No such file or directory
+ls: cannot access echo: No such file or directory
+ls: cannot access hello: No such file or directory
+jstod001@hammer.cs.ucr.edu$ echo hello world
+hello world
+jstod001@hammer.cs.ucr.edu$ echo #should be empty/blank
+
+jstod001@hammer.cs.ucr.edu$ echo hello #world
+hello
+jstod001@hammer.cs.ucr.edu$ echo .
+.
+jstod001@hammer.cs.ucr.edu$ echo ls
+ls
+jstod001@hammer.cs.ucr.edu$ echo ls -a
+ls -a
+jstod001@hammer.cs.ucr.edu$ echo pwd
+pwd
+jstod001@hammer.cs.ucr.edu$ echo touch
+touch
+jstod001@hammer.cs.ucr.edu$ echo echo
+echo
+jstod001@hammer.cs.ucr.edu$ echo abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+jstod001@hammer.cs.ucr.edu$ mkdir test1
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp  test1
+jstod001@hammer.cs.ucr.edu$ rm -rf test1
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp
+jstod001@hammer.cs.ucr.edu$ mkdir test2 test3 test4 test5 test6 test7 test8 test9 test10
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp  test10  test2	test3  test4  test5  test6  test7  test8  test9
+jstod001@hammer.cs.ucr.edu$ rm -rf test2 test3 test4 test5 test6 test7 test8 test9 test10
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp
+jstod001@hammer.cs.ucr.edu$ touch main.cpp
+jstod001@hammer.cs.ucr.edu$ touch .hidden
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp  main.cpp
+jstod001@hammer.cs.ucr.edu$ ls -a
+.  ..  a.out  exec.cpp	.hidden  main.cpp
+jstod001@hammer.cs.ucr.edu$ ls-a #should result in error
+ls-a: No such file or directory
+jstod001@hammer.cs.ucr.edu$ rm .hidden
+jstod001@hammer.cs.ucr.edu$ rm main.cpp
+jstod001@hammer.cs.ucr.edu$ ls -a
+.  ..  a.out  exec.cpp
+jstod001@hammer.cs.ucr.edu$ touch a b c d e f g h i j k l m n o p q r s t u v w x y z
+jstod001@hammer.cs.ucr.edu$ ls
+a  a.out  b  c	d  e  exec.cpp	f  g  h  i  j  k  l  m	n  o  p  q  r  s  t  u	v  w  x  y  z
+jstod001@hammer.cs.ucr.edu$ rm -rf a b c d e f g h i j k l m n o p q r s t u v w x y z
+jstod001@hammer.cs.ucr.edu$ ls
+a.out  exec.cpp
+jstod001@hammer.cs.ucr.edu$ ./a.out #runs RShell executable from within RShell
+jstod001@hammer.cs.ucr.edu$ exit #should exit the second RShell and return to first RShell
+jstod001@hammer.cs.ucr.edu$ cd #known error: cd will be implemented later on
+cd: No such file or directory
+jstod001@hammer.cs.ucr.edu$ exit
+~/rshell/src
+jstod001@hammer $ ee[Kxit
+exit
+
+Script done on Tue 21 Oct 2014 11:13:27 PM PDT

@@ -26,11 +26,11 @@ unsigned tokenCounter(char* a)
     unsigned count = 0;
     char* token;
 
-    token = strtok(a, " ");
+    token = strtok(a, " ;&|");
 
     while(token != NULL)
     {
-        token = strtok(NULL, " ");
+        token = strtok(NULL, " ;&|");
         count++;
     }
 
@@ -42,8 +42,6 @@ int main()
     string str_input = "";
     do
     {
-        cout << "\t<child process>" << endl;
-        
         // command prompt
         char* username = getlogin();
         char hostname[20];
@@ -51,6 +49,18 @@ int main()
         cout << username << "@" << hostname << "$ ";
         
         getline(cin, str_input);
+
+        // # recognition
+        unsigned pos = str_input.find("#");
+        //cout << "pos: " << pos << endl;
+        if(pos != string::npos && pos < str_input.size())
+        {
+            //cout << "before erase: " << str_input << endl;
+            //cout << "size: " << str_input.size() << endl;
+            str_input.erase(pos, str_input.size() - pos);
+            //cout << "after erase: " << str_input << endl;
+            //cout << "size: " << str_input.size() << endl;
+        }
 
         // output message for test purposes
         // cout << "Original string: " << str_input << endl << endl;
@@ -92,14 +102,14 @@ int main()
         
         unsigned i = 0;
         char* ptr;
-        ptr = strtok(c_input, " ");
+        ptr = strtok(c_input, " ;&|");
         while(ptr != NULL)
         {
             arg[i] = ptr;
             // cout message for test purposes
-            cout << "arg[" << i << "] = " << arg[i] << endl;
+            // cout << "arg[" << i << "] = " << arg[i] << endl;
             // cout << "arg[" << i << "] length = " << strlen(arg[i]) << endl;
-            ptr = strtok(NULL, " ");
+            ptr = strtok(NULL, " ;&|");
             i++;
         }
         arg[i] = '\0';
@@ -114,7 +124,7 @@ int main()
         if(string(arg[0]) == "exit")
         {
             //cout message for test purposes
-            cout << "\t<executing exit(0)>" << endl;
+            //cout << "\t<executing exit(0)>" << endl;
             exit(0);
         }
         
@@ -138,7 +148,8 @@ int main()
         if(PID == 0) 
         {
             //cout message for test purposes
-            cout << "\t<in execvp>" << endl;
+            //cout << "\t<child process>" << endl;
+            //cout << "\t<in execvp>" << endl;
             int exec = execvp(arg[0], arg);
             //int exec = execvp(token_list(0), token_list)
             perror(arg[0]);
@@ -158,10 +169,10 @@ int main()
             {
                 perror("wait");
             }
-            cout << "\t<parent process>" << endl;
+            //cout << "\t<parent process>" << endl;
         }
     }while(str_input != "exit");
-    cout << "after do-while" << endl;
+    //cout << "after do-while" << endl;
 /*
     else
     {

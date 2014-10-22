@@ -24,7 +24,7 @@ bugs
 `(;, &&, and ||)`.
 * The `cd` function is currently non-functional. This feature will be added later on.
 * The `echo` command cannot recognize quotes, and will still print words as if they are separate tokens.
-* While comments in the middle of a user entry will be recognized, such as in `echo hello #world`, a user entry that begins with `#`, as in `#echo hello world`, will result in a stated, "logic error."
+* While comments in the middle of a user entry will be recognized, such as in `echo hello #world`, a user entry that begins with `#`, as in `#echo hello world`, will result in a stated, "logic error," and `ABORT` the program.
 * **[ FIXED 10/21/2014: Comments are now recognized in the command prompt. ]** ~~`Comments in the command prompt (using '#') are not recognized.`~~
 * **[ FIXED 10/20/2014: The exit command is now functional without having to make multiple entries. ]** ~~`There is now an exit command in effect, but one caveat is that it may take multiple entries of exit to actually exit the program, due to the way child and parent processes are currently handled.`~~
 * **[ FIXED 10/20/2014: echo can now display an entire string. ]** ~~`The "echo" command can only display one word. For example: "echo hello" will output "hello" to the console, but "echo hello world" will result in an error.`~~

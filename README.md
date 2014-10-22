@@ -12,11 +12,11 @@ This program is currently a work in progress, and is a project for the class, CS
 
 installation
 ------------
-Clone this project [here](https://github.com/jstod001/rshell.git).
+Clone project at: [https://github.com/jstod001/rshell.git](https://github.com/jstod001/rshell.git).
 
 Once cloned:
 * Type `make rshell` to compile the program and place the executable in the `rshell` folder.
-* Or, type `make all` to compile the program, and place the executable in `~/bin`, which is created by the Makefile.
+* Or, type `make all` to compile the program and place the executable in `~/bin`, which is created by the Makefile.
 
 bugs
 ----

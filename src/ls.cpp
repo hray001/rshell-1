@@ -1,24 +1,38 @@
-#include <sys/types.h>
+#include <iostream>
 #include <dirent.h>
 #include <errno.h>
-
-#include <iostream>
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 using namespace std;
 
-/*
- * This is a BARE BONES example of how to use opendir/readdir/closedir.  Notice
- * that there is no error checking on these functions.  You MUST add error 
- * checking yourself.
- */
-
-int main()
+void ls_all() //function for ls -a
 {
-    char *dirName = ".";
-    DIR *dirp = opendir(dirName);
-    dirent *direntp;
-    while ((direntp = readdir(dirp)))
-        cout << direntp->d_name << endl;  // use stat here to find attributes of file
-    closedir(dirp);
+    const char* directoryName = ".";
+    DIR* dir_point = opendir(directoryName);
+
+    if(dir_point == NULL)
+        perror("opendir");
+    
+    dirent* dirent_p;
+
+    while((dirent_p = readdir(dir_point)))
+    {
+        if(dirent_p == NULL)
+            perror("readdir");
+        cout << dirent_p->d_name << endl;   // outputs the name of the file
+    }
+
+    int close_status = closedir(dir_point);
+    if(close_status == -1)
+        perror("closedir");
 }
 
+int main(int argc, char** argv)
+{
+    ls_all();
+
+    return 0;
+}
